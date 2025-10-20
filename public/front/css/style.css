@@ -1,0 +1,104 @@
+:root{
+  --accent: #FF3C00;
+  --dark: #000;
+  --light: #fff;
+  --muted: #6c757d;
+}
+
+/* Reset / Body */
+body{
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #222;
+  background: #fff;
+}
+
+/* Loader */
+#loader{
+  position:fixed;
+  inset:0;
+  background:#000;
+  color:#fff;
+  z-index:10500;
+  transition:opacity .4s ease, visibility .4s ease;
+}
+.loader-inner { text-align:center; }
+.loader-logo{
+  font-weight:700;
+  font-size:1.6rem;
+  letter-spacing:1px;
+  color:var(--light);
+  margin-bottom:0.75rem;
+}
+.loader-logo span{ color:var(--accent); }
+
+.brand-mark{
+  width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:var(--light);color:var(--dark);font-weight:700;
+  border-radius:50%;
+}
+.navbar .navbar-brand{ color:#fff; }
+.navbar .navbar-brand .brand-mark{ background:var(--light); color:var(--dark); font-weight:700; }
+
+/* Hero */
+.hero-section{
+  padding:4rem 0;
+  background-image:linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.25));
+}
+
+/* Buttons */
+.btn-cta{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#fff;
+}
+.btn-cta:hover{
+  transform:translateY(-4px);
+  box-shadow:0 6px 18px rgba(255,60,0,0.15);
+}
+
+/* Accent button */
+.btn-accent{
+  background:var(--accent);
+  color:#fff;
+  border:0;
+  transition:transform .18s ease;
+}
+.btn-accent:hover{ transform:translateY(-3px); opacity:.95; }
+
+/* Cards & Services */
+.service-card .card-body h5{ color:var(--dark); font-weight:600; }
+.service-card:hover{ transform:translateY(-6px); transition:transform .25s ease; }
+
+/* Testimonials */
+.testimonial{ background:#fff; }
+
+/* Gallery hover */
+.gallery-item img{
+  cursor:pointer;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.gallery-item img:hover{ transform:scale(1.04); box-shadow:0 8px 24px rgba(0,0,0,0.12); }
+
+/* Team */
+.team-card img{ object-fit:cover; }
+
+/* Accent text color */
+.text-accent{ color:var(--accent); }
+
+/* Forms focus */
+.form-control:focus, .form-select:focus{
+  box-shadow:0 0 0 .15rem rgba(255,60,0,0.12);
+  border-color: var(--accent);
+}
+
+/* Footer social */
+.social{ color:#fff; font-size:1.05rem; opacity:.85; transition:opacity .15s; }
+.social:hover{ opacity:1; transform:translateY(-3px); color:var(--accent); }
+
+/* Small responsive tweaks */
+@media (max-width: 768px){
+  .hero-section{ padding:3rem 0; }
+  .loader-logo{ font-size:1.2rem; }
+}
+
+/* Misc */
+.card { border-radius: 12px; }

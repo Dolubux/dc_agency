@@ -4,19 +4,19 @@
     <div class="navbar-brand-box">
         {{-- <h4 class="text-white"> {{config('app.name')}} </h4> --}}
         <!-- Dark Logo-->
-        {{-- @if ($setting != null)
-            
+        @if ($parametre != null)
+
             <!-- Light Logo-->
             <a href="#" class="logo logo-light">
-                <span class="logo-sm">
-                    <img src="{{ URL::asset($setting->getFirstMediaUrl('logo_header')) }}" alt="" height="22">
-                </span>
-                <span class="logo-lg">
-                    <img src="{{ URL::asset($setting->getFirstMediaUrl('logo_header')) }}" alt="" width="50"
-                        class="rounded-circle">
-                </span>
+                @if ($parametre->hasMedia('logo_header'))
+                    <span class="logo-lg">
+                        <img src="{{ URL::asset($parametre->getFirstMediaUrl('logo_header')) }}" alt=""
+                            width="70" class="rounded-circle">
+                    </span>
+                @endif
+
             </a>
-        @endif --}}
+        @endif
 
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
             id="vertical-hover">
@@ -82,7 +82,14 @@
                     </li>
                 @endcan
 
-
+                {{-- @can('voir-entreprise') --}}
+                    <li class="nav-item">
+                        <a class="nav-link menu-link {{ Route::is('entreprise.*') ? 'active' : '' }} "
+                            href="{{ route('entreprise.index') }}">
+                            <i class="ri--2-line"></i> <span>ENTREPRISE</span>
+                        </a>
+                    </li>
+                {{-- @endcan --}}
 
 
                 @if (Auth::user()->role == 'superadmin' || Auth::user()->role == 'developpeur' || Auth::user()->can('voir-parametre'))

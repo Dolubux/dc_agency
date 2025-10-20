@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\backend\RoleController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\ModuleController;
-use App\Http\Controllers\backend\RoleController;
+use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\ParametreController;
+use App\Http\Controllers\backend\EntrepriseController;
 use App\Http\Controllers\backend\PermissionController;
 
 
@@ -74,4 +75,21 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
         route::post('update/{id}', 'update')->name('module.update');
         route::get('delete/{id}', 'delete')->name('module.delete');
     });
+    //entreprise
+    Route::prefix('entreprise')->controller(EntrepriseController::class)->group(function () {
+        route::get('', 'index')->name('entreprise.index');
+        route::get('create', 'create')->name('entreprise.create');
+        route::post('store', 'store')->name('entreprise.store');
+        route::get('edit/{id}', 'edit')->name('entreprise.edit');
+        route::post('update/{id}', 'update')->name('entreprise.update');
+        route::get('delete/{id}', 'delete')->name('entreprise.delete');
+    });
+});
+
+
+
+
+//---------------------ROUTE FRONTEND-----------------------------------//
+Route::get('/', function(){
+    return view('index');
 });
