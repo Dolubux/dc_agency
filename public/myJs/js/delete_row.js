@@ -19,12 +19,11 @@ function delete_row(route){
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    type: "GET",
+                    type: "DELETE",
                     url:  url+ Id,
                     dataType: "json",
                     // data: {
                     //     _token: '{{ csrf_token() }}',
-
                     // },
                     success: function(response) {
                         if (response.status == 200) {

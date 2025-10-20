@@ -25,9 +25,9 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
-                    <h5 class="card-title mb-0">Liste des modules</h5>
+                    <h5 class="card-title mb-0">Liste des elements</h5>
                     <a href="{{ route('entreprise.create') }}" type="button" class="btn btn-primary ">Créer
-                        un module</a>
+                        un element</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -35,17 +35,32 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nom du module</th>
-                                    <th>Date creation</th>
+                                    <th>Banniere</th>
+                                    <th>a propos</th>
+                                    <th>Libelle a propos</th>
+                                    <th>Description</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($data_module as $key => $item)
+                                @foreach ($entreprises as $key => $item)
                                     <tr id="row_{{ $item['id'] }}">
                                         <td> {{ ++$key }} </td>
-                                        <td>{{ $item['name'] }}</td>
-                                        <td> {{ $item['created_at'] }} </td>
+                                        <td>
+                                            @if ($item->hasMedia('banniere'))
+                                                <img src="{{ $item->getFirstMediaUrl('banniere') }}" alt=""
+                                                    class="img-thumbnail" width="50">
+                                            @endif
+                                        </td>
+
+                                        <td>
+                                            @if ($item->hasMedia('image_apropos'))
+                                                <img src="{{ $item->getFirstMediaUrl('image_apropos') }}" alt=""
+                                                    class="img-thumbnail" width="50">
+                                            @endif
+                                        </td>
+                                        <td>{{ $item['libelle_apropos'] }}</td>
+                                        <td> {!! $item['description_apropos'] !!} </td>
                                         <td>
                                             <div class="dropdown d-inline-block">
                                                 <button class="btn btn-soft-secondary btn-sm dropdown" type="button"
@@ -55,11 +70,9 @@
                                                 <ul class="dropdown-menu dropdown-menu-end">
                                                     <li><a href="#!" class="dropdown-item"><i
                                                                 class="ri-eye-fill align-bottom me-2 text-muted"></i>
-                                                            View</a>
+                                                            voir</a>
                                                     </li>
-                                                    <li><a type="button" class="dropdown-item edit-item-btn"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#myModalEdit{{ $item['id'] }}"><i
+                                                    <li><a href="{{route('entreprise.edit' , $item->id)}}" type="button" class="dropdown-item edit-item-btn"><i
                                                                 class="ri-pencil-fill align-bottom me-2 text-muted"></i>
                                                             Modifier</a></li>
                                                     <li>
@@ -73,7 +86,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -103,7 +116,7 @@
 
     <script>
         $(document).ready(function() {
-            var route = "module"
+            var route = "entreprise"
             delete_row(route);
         })
     </script>

@@ -21,7 +21,7 @@
 </section>
 <style>
     .hero-section {
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('/front/images/bannieres/1.png');
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url({{$entreprise?->getFirstMediaUrl('banniere')}});
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;

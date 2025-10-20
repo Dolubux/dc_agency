@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\RoleController;
 use App\Http\Controllers\backend\AdminController;
+use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\backend\ModuleController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\ParametreController;
@@ -55,7 +56,7 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
         route::get('', 'index')->name('role.index');
         route::post('store', 'store')->name('role.store');
         route::post('update/{id}', 'update')->name('role.update');
-        route::get('delete/{id}', 'delete')->name('role.delete');
+        route::delete('delete/{id}', 'delete')->name('role.delete');
     });
 
     //permission
@@ -65,7 +66,7 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
         route::post('store', 'store')->name('permission.store');
         route::get('edit{id}', 'edit')->name('permission.edit');
         route::put('update/{id}', 'update')->name('permission.update');
-        route::get('delete/{id}', 'delete')->name('permission.delete');
+        route::delete('delete/{id}', 'delete')->name('permission.delete');
     });
 
     //module
@@ -81,8 +82,8 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
         route::get('create', 'create')->name('entreprise.create');
         route::post('store', 'store')->name('entreprise.store');
         route::get('edit/{id}', 'edit')->name('entreprise.edit');
-        route::post('update/{id}', 'update')->name('entreprise.update');
-        route::get('delete/{id}', 'delete')->name('entreprise.delete');
+        route::put('update/{id}', 'update')->name('entreprise.update');
+        route::delete('delete/{id}', 'delete')->name('entreprise.delete');
     });
 });
 
@@ -90,6 +91,6 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
 
 
 //---------------------ROUTE FRONTEND-----------------------------------//
-Route::get('/', function(){
-    return view('index');
+Route::controller(HomeController::class)->group(function () {
+    route::get('', 'index')->name('home.index');
 });

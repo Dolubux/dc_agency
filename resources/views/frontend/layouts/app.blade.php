@@ -356,7 +356,7 @@
         }
 
         .section-title {
-            font-size: 3rem;
+            /* font-size: 3rem; */
             font-weight: 700;
             margin-bottom: 1.5rem;
             font-family: 'Playfair Display', serif;

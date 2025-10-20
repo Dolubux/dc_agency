@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Entreprise;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EntrepriseController extends Controller
 {
     // Afficher la liste des entreprises
     public function index()
     {
-        $entreprises = Entreprise::all();
+        $entreprises = Entreprise::get();
         return view('backend.pages.entreprise.index', compact('entreprises'));
     }
 
@@ -26,20 +27,16 @@ class EntrepriseController extends Controller
     {
         $request->validate([
             'libelle_apropos' => 'required|string|max:255',
-            'description_apropos' => 'nullable|string',
-            'contact' => 'nullable|string|max:255',
-            'autre_contact' => 'nullable|string|max:255',
-            'email' => 'nullable|email|max:255',
-            'adresse' => 'nullable|string|max:255',
-            'facebook' => 'nullable|string|max:255',
-            'linkedin' => 'nullable|string|max:255',
-            'instagram' => 'nullable|string|max:255',
-            'tiktok' => 'nullable|string|max:255',
+            'description_apropos' => 'required|string',
             'banniere' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'image_apropos' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        $entreprise = Entreprise::create($request->except(['banniere', 'image_apropos']));
+        $entreprise = Entreprise::firstOrCreate([
+            'libelle_apropos' => $request->libelle_apropos,
+            'description_apropos' => $request->description_apropos,
+
+        ]);
 
         // Gestion des images avec Spatie MediaLibrary
         if ($request->hasFile('banniere')) {
@@ -48,7 +45,7 @@ class EntrepriseController extends Controller
         if ($request->hasFile('image_apropos')) {
             $entreprise->addMediaFromRequest('image_apropos')->toMediaCollection('image_apropos');
         }
-
+        Alert::success('success', 'operation reussi avec success');
         return redirect()->route('entreprise.index')->with('success', 'Entreprise créée avec succès.');
     }
 
@@ -65,32 +62,32 @@ class EntrepriseController extends Controller
         $request->validate([
             'libelle_apropos' => 'required|string|max:255',
             'description_apropos' => 'nullable|string',
-            'contact' => 'nullable|string|max:255',
-            'autre_contact' => 'nullable|string|max:255',
-            'email' => 'nullable|email|max:255',
-            'adresse' => 'nullable|string|max:255',
-            'facebook' => 'nullable|string|max:255',
-            'linkedin' => 'nullable|string|max:255',
-            'instagram' => 'nullable|string|max:255',
-            'tiktok' => 'nullable|string|max:255',
             'banniere' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'image_apropos' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        $entreprise = Entreprise::findOrFail($id);
-        $entreprise->update($request->except(['banniere', 'image_apropos']));
+        try {
+            $entreprise = Entreprise::findOrFail($id);
+            $entreprise->update([
+                'libelle_apropos' => $request->libelle_apropos,
+                'description_apropos' => $request->description_apropos,
+            ]);
 
-        // Gestion des images avec Spatie MediaLibrary
-        if ($request->hasFile('banniere')) {
-            $entreprise->clearMediaCollection('banniere');
-            $entreprise->addMediaFromRequest('banniere')->toMediaCollection('banniere');
-        }
-        if ($request->hasFile('image_apropos')) {
-            $entreprise->clearMediaCollection('image_apropos');
-            $entreprise->addMediaFromRequest('image_apropos')->toMediaCollection('image_apropos');
-        }
+            // Gestion des images avec Spatie MediaLibrary
+            if ($request->hasFile('banniere')) {
+                $entreprise->clearMediaCollection('banniere');
+                $entreprise->addMediaFromRequest('banniere')->toMediaCollection('banniere');
+            }
+            if ($request->hasFile('image_apropos')) {
+                $entreprise->clearMediaCollection('image_apropos');
+                $entreprise->addMediaFromRequest('image_apropos')->toMediaCollection('image_apropos');
+            }
 
-        return redirect()->route('entreprise.index')->with('success', 'Entreprise mise à jour avec succès.');
+            Alert::success('success', 'operation reussi avec success');
+            return redirect()->route('entreprise.index')->with('success', 'Entreprise mise à jour avec succès.');
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
     }
 
     // Supprimer une entreprise
@@ -98,6 +95,9 @@ class EntrepriseController extends Controller
     {
         $entreprise = Entreprise::findOrFail($id);
         $entreprise->delete();
-        return redirect()->route('entreprise.index')->with('success', 'Entreprise supprimée avec succès.');
+        return response()->json([
+            'status' => 200,
+            'message' => 'Entreprise supprimée avec succès.'
+        ]);
     }
 }
