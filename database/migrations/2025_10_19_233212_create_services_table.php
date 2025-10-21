@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
+            $table->string('libelle')->nullable();
+            $table->string('slug')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('icone')->nullable();
+            $table->boolean('statut')->default(1);
             $table->timestamps();
         });
     }

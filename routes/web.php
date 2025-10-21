@@ -5,6 +5,7 @@ use App\Http\Controllers\backend\RoleController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\backend\ModuleController;
+use App\Http\Controllers\backend\ServiceController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\ParametreController;
 use App\Http\Controllers\backend\EntrepriseController;
@@ -37,7 +38,7 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
         route::get('maintenance-up', 'maintenanceUp')->name('parametre.maintenance-up');
         route::get('maintenance-down', 'maintenanceDown')->name('parametre.maintenance-down');
         route::get('optimize-clear', 'optimizeClear')->name('parametre.optimize-clear');
-         Route::get('download-backup/{file}', 'downloadBackup')->name('setting.download-backup');  // download backup db
+        Route::get('download-backup/{file}', 'downloadBackup')->name('setting.download-backup');  // download backup db
     });
 
 
@@ -74,7 +75,7 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
         route::get('', 'index')->name('module.index');
         route::post('store', 'store')->name('module.store');
         route::post('update/{id}', 'update')->name('module.update');
-        route::get('delete/{id}', 'delete')->name('module.delete');
+        route::delete('delete/{id}', 'delete')->name('module.delete');
     });
     //entreprise
     Route::prefix('entreprise')->controller(EntrepriseController::class)->group(function () {
@@ -84,6 +85,17 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
         route::get('edit/{id}', 'edit')->name('entreprise.edit');
         route::put('update/{id}', 'update')->name('entreprise.update');
         route::delete('delete/{id}', 'delete')->name('entreprise.delete');
+    });
+
+    //service
+    Route::prefix('services')->controller(ServiceController::class)->group(function () {
+        route::get('', 'index')->name('service.index');
+        route::get('create', 'create')->name('service.create');
+        route::post('store', 'store')->name('service.store');
+        route::get('show/{id}', 'show')->name('service.show');
+        route::get('edit/{id}', 'edit')->name('service.edit');
+        route::put('update/{id}', 'update')->name('service.update');
+        route::delete('delete/{id}', 'delete')->name('service.delete');
     });
 });
 

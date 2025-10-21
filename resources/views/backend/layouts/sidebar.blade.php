@@ -10,7 +10,7 @@
             <a href="#" class="logo logo-light">
                 @if ($parametre->hasMedia('logo_header'))
                     <span class="logo-lg">
-                        <img src="{{ URL::asset($parametre->getFirstMediaUrl('logo_header')) }}" alt=""
+                        <img src="{{ URL::asset($parametre?->getFirstMediaUrl('logo_header')) }}" alt=""
                             width="70" class="rounded-circle">
                     </span>
                 @endif
@@ -87,6 +87,15 @@
                         <a class="nav-link menu-link {{ Route::is('entreprise.*') ? 'active' : '' }} "
                             href="{{ route('entreprise.index') }}">
                             <i class="ri--2-line"></i> <span>ENTREPRISE</span>
+                        </a>
+                    </li>
+                {{-- @endcan --}}
+
+                 {{-- @can('voir-entreprise') --}}
+                    <li class="nav-item">
+                        <a class="nav-link menu-link {{ Route::is('service.*') ? 'active' : '' }} "
+                            href="{{ route('service.index') }}">
+                            <i class="ri--2-line"></i> <span>SERVICES</span>
                         </a>
                     </li>
                 {{-- @endcan --}}

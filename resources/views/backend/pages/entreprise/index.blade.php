@@ -115,9 +115,6 @@
     <script src="{{ URL::asset('build/js/app.js') }}"></script>
 
     <script>
-        $(document).ready(function() {
-            var route = "entreprise"
-            delete_row(route);
-        })
+        window.routeName = "entreprise"
     </script>
 @endsection
