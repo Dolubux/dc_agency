@@ -101,6 +101,16 @@
                 {{-- @endcan --}}
 
 
+                      {{-- @can('voir-entreprise') --}}
+                    <li class="nav-item">
+                        <a class="nav-link menu-link {{ Route::is('portfolios.*') ? 'active' : '' }} "
+                            href="{{ route('portfolios.index') }}">
+                            <i class="ri--2-line"></i> <span>PORTFOLIOS</span>
+                        </a>
+                    </li>
+                {{-- @endcan --}}
+
+
                 @if (Auth::user()->role == 'superadmin' || Auth::user()->role == 'developpeur' || Auth::user()->can('voir-parametre'))
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarAuth" data-bs-toggle="collapse" role="button"

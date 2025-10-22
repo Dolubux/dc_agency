@@ -356,7 +356,7 @@
         }
 
         .section-title {
-            /* font-size: 3rem; */
+            font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
             font-family: 'Playfair Display', serif;
@@ -364,11 +364,11 @@
         }
 
         .section-description {
-            font-size: 1.1rem;
+            font-size:16px;
             color: #666;
-            max-width: 600px;
+            /* max-width: 600px; */
             margin: 0 auto;
-            line-height: 1.8;
+            line-height: 1.6;
         }
 
         /* Service Cards Premium */
@@ -741,7 +741,9 @@
         <!-- Navigation Premium -->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#">DC <span>AGENCY</span></a>
+                <a class="navbar-brand" href="#">
+                    <img src="{{ $parametre?->getFirstMediaUrl('logo_header') ?? URL::asset('front/images/logo/logo.jpg') }}" alt="DC AGENCY" width="60">
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>

@@ -11,7 +11,7 @@
     @include('frontend.sections.services')
 
     <!-- Portfolio Section -->
-    @include('frontend.sections.realisations')
+    @include('frontend.sections.portfolios')
 
     <!-- Team Section Premium -->
     <section id="equipes" class="services-section">

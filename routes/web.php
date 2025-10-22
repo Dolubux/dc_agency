@@ -8,6 +8,7 @@ use App\Http\Controllers\backend\ModuleController;
 use App\Http\Controllers\backend\ServiceController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\ParametreController;
+use App\Http\Controllers\backend\PortfolioController;
 use App\Http\Controllers\backend\EntrepriseController;
 use App\Http\Controllers\backend\PermissionController;
 
@@ -99,7 +100,17 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
     });
 });
 
-
+//portfolio 
+Route::prefix('portfolio')->name('portfolios.')->controller(PortfolioController::class)->group(function () {
+    route::get('', 'index')->name('index');
+    route::get('create', 'create')->name('create');
+    route::post('store', 'store')->name('store');
+    route::get('show/{id}', 'show')->name('show');
+    route::get('edit/{id}', 'edit')->name('edit');
+    route::put('update/{id}', 'update')->name('update');
+    route::delete('delete/{id}', 'delete')->name('delete');
+    Route::get('portfolios/{portfolio}/media/{media}', 'deleteMedia')->name('media.delete');
+});
 
 
 //---------------------ROUTE FRONTEND-----------------------------------//
