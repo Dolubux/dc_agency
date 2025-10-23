@@ -14,7 +14,7 @@
     @include('frontend.sections.portfolios')
 
     <!-- Team Section Premium -->
-    <section id="equipes" class="services-section">
+    {{-- <section id="equipes" class="services-section">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <div class="section-subtitle">Notre Équipe</div>
@@ -62,5 +62,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection

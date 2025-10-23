@@ -111,7 +111,8 @@
                 {{-- @endcan --}}
 
 
-                @if (Auth::user()->role == 'superadmin' || Auth::user()->role == 'developpeur' || Auth::user()->can('voir-parametre'))
+              @auth
+                    @if (Auth::check() && Auth::user()->role == 'superadmin' || Auth::user()->role == 'developpeur' || Auth::user()->can('voir-parametre'))
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarAuth" data-bs-toggle="collapse" role="button"
                             aria-controls="sidebarAuth">
@@ -147,6 +148,7 @@
                         </div>
                     </li>
                 @endif
+              @endauth
 
             </ul>
         </div>

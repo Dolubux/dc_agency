@@ -169,6 +169,32 @@
             font-size: 1.5rem;
             padding: 8px 12px;
         }
+
+        /* --- Nom de l'événement au bas de l'image --- */
+        .portfolio-event-name {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .portfolio-event-name h6 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+            line-height: 1.3;
+            background-color: #ff3c00;
+        }
+
+        /* Responsive pour mobile */
+        @media (max-width: 576px) {
+            .portfolio-event-name h6 {
+                font-size: 1rem;
+                background-color: #ff3c00;
+                padding: 5px 10px;
+                border-radius: 5px;
+                color: #fff;    
+            }
+        }
     }
 </style>
 
@@ -178,8 +204,7 @@
             <div class="section-subtitle">Portfolio</div>
             <h2 class="section-title heading-font">Nos Réalisations Exceptionnelles</h2>
             <p class="section-description">
-                Découvrez quelques-uns de nos projets les plus prestigieux et les expériences uniques que nous avons
-                créées.
+                Découvrez quelques-unes des evenements auquelles nous avons participé.
             </p>
         </div>
 
@@ -192,7 +217,13 @@
                             class="portfolio-image">
                         <div class="portfolio-overlay">
                             <h5 class="portfolio-title">{{ $portfolio?->libelle }}</h5>
+                             <i class="fas fa-search-plus text-white fa-2x"></i>
                         </div>
+                    </div>
+                    
+                    <!-- ✅ Nom de l'événement au bas de l'image -->
+                    <div class="portfolio-event-name mt-4 text-center fw-bold text-uppercase py-2 px-3 d-inline-block text-white" style="background-color: #f6805d">
+                        <h6 >{{ $portfolio?->libelle }}</h6>
                     </div>
 
                     <!-- Galerie cachée -->
@@ -207,6 +238,12 @@
                 </div>
             @endforeach
         </div>
+
+         <!-- Boutton pour voir plus -->
+        <div class="text-center mt-4">
+            <a href="{{ route('page.portfolio') }}" class="btn btn-premium">Voir notre portfolio complet</a>
+        </div>  
+
     </div>
 
     <!-- Lightbox personnalisée -->

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\RoleController;
 use App\Http\Controllers\backend\AdminController;
-use App\Http\Controllers\frontend\HomeController;
+use App\Http\Controllers\frontend\PageController;
 use App\Http\Controllers\backend\ModuleController;
 use App\Http\Controllers\backend\ServiceController;
 use App\Http\Controllers\backend\DashboardController;
@@ -114,6 +114,11 @@ Route::prefix('portfolio')->name('portfolios.')->controller(PortfolioController:
 
 
 //---------------------ROUTE FRONTEND-----------------------------------//
-Route::controller(HomeController::class)->group(function () {
-    route::get('', 'index')->name('home.index');
+Route::controller(PageController::class)->group(function () {
+    route::get('', 'accueil')->name('page.accueil');
+    route::get('portfolios', 'portfolio')->name('page.portfolio');
+    route::post('contact', 'contact')->name('page.contact');  // soumettre un formulaire de contact
+    // candidature
+    route::get('candidature', 'candidature')->name('page.candidature');
+    route::post('candidature', 'candidatureStore')->name('page.candidature.store');
 });

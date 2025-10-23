@@ -364,7 +364,7 @@
         }
 
         .section-description {
-            font-size:16px;
+            font-size: 16px;
             color: #666;
             /* max-width: 600px; */
             margin: 0 auto;
@@ -581,7 +581,7 @@
             background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary-color);
             box-shadow: 0 0 0 0.2rem rgba(255, 60, 0, 0.25);
-            color: var(--light-color);
+            color: #FF3C00;
         }
 
         /* Footer Premium */
@@ -723,6 +723,24 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .nav-link.active {
+            color: #FF3C00 !important;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link.active::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #FF3C00;
+            border-radius: 4px;
+        }
     </style>
 </head>
 
@@ -730,8 +748,8 @@
     <!-- Loader Premium -->
     <div id="loader">
         <div class="loader-content">
-            <div class="loader-logo">DC <span>AGENCY</span></div>
-            <div class="loader-tagline">Événementiel de Prestige</div>
+            <div class="loader-logo"><img src="{{$parametre?->getFirstMediaUrl('logo_header') ?? URL::asset('front/images/logo/logo.jpg')}}" alt="{{config('app.name')}}" width="70"></div>
+            <div class="loader-tagline">L’élégance au service de vos événements.</div>
             <div class="loader-spinner"></div>
         </div>
     </div>
@@ -742,7 +760,8 @@
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="{{ $parametre?->getFirstMediaUrl('logo_header') ?? URL::asset('front/images/logo/logo.jpg') }}" alt="DC AGENCY" width="60">
+                    <img src="{{ $parametre?->getFirstMediaUrl('logo_header') ?? URL::asset('front/images/logo/logo.jpg') }}"
+                        alt="DC AGENCY" width="60">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
@@ -750,29 +769,33 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#accueil">Accueil</a>
+                            <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/#accueil') }}"
+                                data-section="accueil">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#about">Qui sommes-nous</a>
+                            <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/#about') }}"
+                                data-section="about">Qui sommes-nous</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#services">Services</a>
+                            <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/#services') }}"
+                                data-section="services">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#portfolio">Portfolio</a>
+                            <a class="nav-link {{ request()->is('/') || request()->is('portfolios') ? 'active' : '' }}" href="{{ url('/#portfolio') }}"
+                                data-section="portfolio">Portfolio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#equipes">Équipe</a>
+                            <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/#contact') }}"
+                                data-section="contact">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contact</a>
+                            <a class="nav-link btn btn-primary-custom ms-2 {{Route::is('page.candidature') ? 'active' : ''}}" href="{{ route('page.candidature') }}"
+                                data-section="candidat">Nous rejoindre</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-
-
 
         <!--YIELD CONTENT-->
         @yield('content')
@@ -788,13 +811,20 @@
                     <div class="col-lg-4 mb-4">
                         <div class="footer-logo-section">
                             <div class="footer-logo">DC <span>AGENCY</span></div>
-                            <p class="footer-description">Créateurs d'expériences exceptionnelles et d'événements sur
-                                mesure depuis 2010. Votre vision, notre expertise, des souvenirs inoubliables.</p>
+                            <p class="footer-description">L’art d’accueillir, l’excellence d’organiser.</p>
                             <div class="social-icons-premium">
-                                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                                <a href="{{ $parametre?->lien_facebook }}" target="_blank" class="social-icon"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a href="{{ $parametre?->lien_instagram }}" target="_blank" class="social-icon"><i
+                                        class="fab fa-instagram"></i></a>
+                                <a href="{{ $parametre?->lien_linkedin }}" target="_blank" class="social-icon"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a href="{{ $parametre?->lien_twitter }}" target="_blank" class="social-icon"><i
+                                        class="fab fa-twitter"></i></a>
+                                {{-- <a href="{{ $parametre?->lien_youtube }}" class="social-icon"><i class="fab fa-youtube"></i></a> --}}
+                                {{-- <a href="{{ $parametre?->lien_whatsapp }}" class="social-icon"><i class="fab fa-whatsapp"></i></a> --}}
+                                <a href="{{ $parametre?->lien_tiktok }}" target="_blank" class="social-icon"><i
+                                        class="fab fa-tiktok"></i></a>
                             </div>
                         </div>
                     </div>
@@ -803,10 +833,9 @@
                         <div class="footer-section">
                             <h5>Services</h5>
                             <ul class="footer-links">
-                                <li><a href="#services">Événements corporatifs</a></li>
-                                <li><a href="#services">Événements privés</a></li>
-                                <li><a href="#services">Mariages de luxe</a></li>
-                                <li><a href="#services">Communication</a></li>
+                                @foreach ($services as $item)
+                                    <li><a href="#services">{{ $item->libelle }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -816,7 +845,7 @@
                             <h5>Entreprise</h5>
                             <ul class="footer-links">
                                 <li><a href="#about">À propos</a></li>
-                                <li><a href="#equipes">Notre équipe</a></li>
+                                <li><a href="#services">Nos Services</a></li>
                                 <li><a href="#portfolio">Portfolio</a></li>
                                 <li><a href="#contact">Contact</a></li>
                             </ul>
@@ -825,26 +854,27 @@
 
                     <div class="col-lg-4 mb-4">
                         <div class="footer-section">
-                            <h5>Newsletter Exclusive</h5>
-                            <p>Recevez nos dernières créations et tendances événementielles.</p>
-                            <form class="mt-3">
-                                <div class="input-group">
-                                    <input type="email" class="form-control form-control-premium"
-                                        placeholder="Votre email" required>
-                                    <button class="btn btn-premium" type="submit">S'abonner</button>
-                                </div>
-                            </form>
+                            <h5>Contactez-nous</h5>
+                            <p>Email: <a href="mailto:{{ $parametre?->email1 }}"
+                                    style="color: #ccc;">{{ $parametre?->email1 }}</a></p>
+                            <p>Téléphone: <a href="tel:{{ $parametre?->contact1 }}"
+                                    style="color: #ccc;">{{ $parametre?->contact1 }}</a></p>
+                            <p>Adresse: {{ $parametre?->localisation }}</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="footer-bottom">
-                    <p>&copy; 2023 DC Agency. Tous droits réservés. | Mentions légales | Politique de confidentialité
+                    <p>&copy; {{ date('Y') }} DC Agency. Tous droits réservés. Developpé par <a href="https://www.linkedin.com/in/alex-kouamelan/"
+                            target="_blank" style="color: #ccc;">Alex Kouamelan</a>.
                     </p>
                 </div>
             </div>
         </footer>
     </div>
+
+
+    @include('frontend.components.whatsapp_bouttonup')
 
     <!-- Scripts -->
     <script>
@@ -881,8 +911,37 @@
                     }, 800);
                 }
             }
+
+            const sections = document.querySelectorAll("section[id]");
+            const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+            function activateLink() {
+                let scrollY = window.scrollY + 150; // ajustement pour le header
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute("id");
+
+                    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                        navLinks.forEach(link => {
+                            link.classList.remove("active");
+                            if (link.dataset.section === sectionId) {
+                                link.classList.add("active");
+                            }
+                        });
+                    }
+                });
+            }
+
+            // Exécute au chargement et pendant le scroll
+            if (window.location.pathname === "/") {
+                window.addEventListener("scroll", activateLink);
+                activateLink();
+            }
         })();
     </script>
+
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -940,31 +999,7 @@
             observer.observe(el);
         });
 
-        // Form validation enhancement
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                // Simulate form submission
-                const submitBtn = this.querySelector('button[type="submit"]');
-                const originalText = submitBtn.textContent;
-
-                submitBtn.textContent = 'Envoi en cours...';
-                submitBtn.disabled = true;
-
-                setTimeout(() => {
-                    submitBtn.textContent = 'Message envoyé !';
-                    submitBtn.style.background = '#28a745';
-
-                    setTimeout(() => {
-                        submitBtn.textContent = originalText;
-                        submitBtn.disabled = false;
-                        submitBtn.style.background = '';
-                        this.reset();
-                    }, 2000);
-                }, 1500);
-            });
-        });
+      
 
         // Mobile menu close on link click
         document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
