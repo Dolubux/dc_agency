@@ -1,10 +1,9 @@
 <section id="accueil" class="hero-section">
     <div class="container">
         <div class="hero-content" data-aos="fade-up">
-            <div class="hero-tagline">Événementiel de Prestige</div>
+            <div class="hero-tagline">L’élégance au service de vos événements.</div>
             <h1 class="heading-font">DC Agency</h1>
-            <p class="hero-description">Créateurs d'expériences exceptionnelles et d'événements sur mesure qui marquent
-                les esprits et renforcent votre image de marque</p>
+            <p class="hero-description">Des hôtesses, une équipe, une expérience — au service de votre image.</p>
             <div class="d-flex justify-content-center gap-3 flex-wrap"> <a href="#services"
                     class="btn btn-premium">Découvrir nos services</a> <a href="#portfolio"
                     class="btn btn-outline-premium">Voir notre portfolio</a> </div>
@@ -19,6 +18,10 @@
         </div>
     </div>
 </section>
+
+
+
+
 <style>
     .hero-section {
         background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url({{$entreprise?->getFirstMediaUrl('banniere')}});

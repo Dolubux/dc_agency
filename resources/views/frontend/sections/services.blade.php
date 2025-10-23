@@ -2,8 +2,9 @@
     <div class="container">
         <div class="section-header" data-aos="fade-up">
             <div class="section-subtitle">Nos Services</div>
-            <h2 class="section-title heading-font">Solutions Événementielles Complètes</h2>
-            <p class="section-description">DC Agency, l’élégance au service de l’accueil et de vos événements d’exception.</p>
+            <h2 class="section-title heading-font">L’art d’accueillir, l’excellence d’organiser.</h2>
+            <p class="section-description">DC Agency, l’élégance au service de l’accueil et de vos événements
+                d’exception.</p>
         </div>
         <div class="row">
 
@@ -21,7 +22,7 @@
                 </div>
             @endforeach
 
-            
+
 
         </div>
     </div>

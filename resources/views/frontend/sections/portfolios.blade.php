@@ -188,7 +188,7 @@
                 <div class="portfolio-item" data-aos="fade-up" data-aos-delay="100">
                     <div class="portfolio-image-wrapper" data-gallery="{{ $portfolio->id }}"
                         onclick="openGallery({{ $portfolio->id }})">
-                        <img src="{{ $portfolio?->getFirstMediaUrl('principal') }}" alt="{{ $portfolio?->libelle }}"
+                        <img src="{{ $portfolio?->getFirstMediaUrl('principal') ?? URL::asset('front/images/logo/logo_f.jpg') }}" alt="{{ $portfolio?->libelle }}"
                             class="portfolio-image">
                         <div class="portfolio-overlay">
                             <h5 class="portfolio-title">{{ $portfolio?->libelle }}</h5>
