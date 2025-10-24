@@ -45,6 +45,7 @@
         }
 
         .hero-section h1 {
+            margin-top: 25px;
             font-size: 2.2rem;
         }
 

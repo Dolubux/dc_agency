@@ -426,7 +426,7 @@
 
     .lightbox iframe {
         width: auto;
-        height: auto;
+        height: 60vh;
         max-width: 90%;
         max-height: 80vh;
         border-radius: 12px;

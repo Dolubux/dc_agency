@@ -18,7 +18,7 @@ class PageController extends Controller
         // recuperer les infos de entreprises
         $entreprise = Entreprise::first();
         $services = Service::active()->get();
-        $portfolios = Portfolio::active()->get();
+        $portfolios = Portfolio::active()->orderBy('created_at', 'desc')->take(8)->get();
 
 
         return view('index', compact('entreprise', 'services', 'portfolios'));
@@ -27,7 +27,7 @@ class PageController extends Controller
 
     public function portfolio()
     {
-        $portfolios = Portfolio::active()->latest()->paginate(12);
+        $portfolios = Portfolio::active()->orderBy('created_at', 'desc')->paginate(9);
         return view('frontend.pages.portfolios', compact('portfolios'));
     }
 

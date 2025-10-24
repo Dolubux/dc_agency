@@ -4,7 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DC Agency - @yield('title', 'Agence evenementielle')</title>
+    <meta
+        description="DC Agency - Agence événementielle spécialisée dans la fourniture d'hôtesses et d'équipes professionnelles pour vos événements.">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('favicon/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('favicon/favicon-16x16.png')}}">
+    <link rel="manifest" href="{{asset('favicon/site.webmanifest')}}">
+    <title>DC Agency - @yield('title', 'Agence evenementielle-accueil')</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- AOS CSS -->
@@ -771,7 +777,7 @@
         <!-- Navigation Premium -->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ route('page.accueil') }}">
                     <img src="{{ $parametre?->getFirstMediaUrl('logo_header') ?? URL::asset('front/images/logo/logo.jpg') }}"
                         alt="DC AGENCY" width="60">
                 </a>
@@ -880,6 +886,9 @@
                     <p>&copy; {{ date('Y') }} DC Agency. Tous droits réservés. Developpé par <a
                             href="https://www.linkedin.com/in/alex-kouamelan/" target="_blank"
                             style="color: #ccc;">Alex Kouamelan</a>.
+                            <a
+                            href="https://www.dolubux.com" target="_blank"
+                            style="color: #ccc;">Dolubux</a>.
                     </p>
                 </div>
             </div>

@@ -50,8 +50,8 @@ class PortfolioController extends Controller
                 'statut' => 'boolean',
                 'image_principale' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp,svg,avif|max:1024',
                 'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1024',
-                'video_facebook' => 'nullable|url',
-                'video_youtube' => 'nullable|url',
+                'video_facebook' => 'nullable',
+                'video_youtube' => 'nullable',
             ]);
 
             $portfolio = Portfolio::create([
@@ -125,8 +125,8 @@ class PortfolioController extends Controller
                 'statut' => 'boolean',
                 'image_principale' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp,svg,avif|max:1024',
                 'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1024',
-                'video_facebook' => 'nullable|url',
-                'video_youtube' => 'nullable|url',
+                'video_facebook' => 'nullable',
+                'video_youtube' => 'nullable',
             ]);
 
             $portfolio->update([
