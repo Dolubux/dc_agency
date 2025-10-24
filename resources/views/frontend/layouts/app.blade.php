@@ -363,7 +363,7 @@
         }
 
         .section-title {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
             font-family: 'Playfair Display', serif;
@@ -375,7 +375,7 @@
             color: #666;
             /* max-width: 600px; */
             margin: 0 auto;
-            line-height: 1.6;
+            line-height: 1.6;            
         }
 
         /* Service Cards Premium */
