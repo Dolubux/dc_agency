@@ -48,13 +48,17 @@ class PortfolioController extends Controller
                 'libelle' => 'required|string|max:255',
                 'description' => 'nullable|string',
                 'statut' => 'boolean',
-                'image_principale' => 'required|image|mimes:jpeg,png,jpg,gif,webp,svg,avif|max:1024',
-                'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1024'
+                'image_principale' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp,svg,avif|max:1024',
+                'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1024',
+                'video_facebook' => 'nullable|url',
+                'video_youtube' => 'nullable|url',
             ]);
 
             $portfolio = Portfolio::create([
                 'libelle' => $request->libelle,
                 'description' => $request->description,
+                'video_facebook' => $request->video_facebook,
+                'video_youtube' => $request->video_youtube,
                 'statut' => $request->statut,
             ]);
 
@@ -75,7 +79,8 @@ class PortfolioController extends Controller
             return redirect()->route('portfolios.index')->with('success', 'Portfolio créé avec succès.');
         } catch (Exception $e) {
             Log::error('Erreur store portfolio: ' . $e->getMessage());
-            return $e->getMessage();}
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -118,13 +123,17 @@ class PortfolioController extends Controller
                 'libelle' => 'required|string|max:255',
                 'description' => 'nullable|string',
                 'statut' => 'boolean',
-                'image_principale' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp,svg,avif|max:4096',
-                'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096'
+                'image_principale' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp,svg,avif|max:1024',
+                'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1024',
+                'video_facebook' => 'nullable|url',
+                'video_youtube' => 'nullable|url',
             ]);
 
             $portfolio->update([
                 'libelle' => $request->libelle,
                 'description' => $request->description,
+                'video_facebook' => $request->video_facebook,
+                'video_youtube' => $request->video_youtube,
                 'statut' => $request->statut,
             ]);
 

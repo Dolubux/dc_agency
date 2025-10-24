@@ -40,6 +40,8 @@
                                     <th>Libellé</th>
                                     <th>Slug</th>
                                     <th>Description</th>
+                                    <th>facebook</th>
+                                    <th>youtube</th>
                                     <th>Statut</th>
                                     <th>Actions</th>
                                 </tr>
@@ -53,7 +55,7 @@
                                                 <img src="{{ $item->getFirstMediaUrl('principal') }}" alt="{{ $item['libelle'] }}"
                                                     class="img-thumbnail" width="50">
                                             @else
-                                                <span class="badge bg-light text-dark">Aucune image</span>
+                                               <code>{{ $item['video_facebook'] ?? $item['video_youtube'] }}</code>
                                             @endif
                                         </td>
                                         <td>{{ $item['libelle'] }}</td>
@@ -64,6 +66,24 @@
                                             <div style="max-width: 200px;">
                                                 {{ Str::limit($item['description'], 100) }}
                                             </div>
+                                        </td>
+                                        <td>
+                                            @if ($item['video_facebook'])
+                                                <a href="{{ $item['video_facebook'] }}"  target="_blank">
+                                                    Voir la vidéo
+                                                </a>
+                                            @else
+                                                <span class="badge bg-light text-dark">Aucune vidéo</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($item['video_youtube'])
+                                                <a href="{{ $item['video_youtube'] }}" target="_blank">
+                                                    Voir la vidéo
+                                                </a>
+                                            @else
+                                                <span class="badge bg-light text-dark">Aucune vidéo</span>
+                                            @endif
                                         </td>
                                         <td>
                                             @if ($item['statut'])

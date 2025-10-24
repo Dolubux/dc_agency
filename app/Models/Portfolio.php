@@ -14,12 +14,13 @@ class Portfolio extends Model implements HasMedia
      use InteractsWithMedia, Sluggable;
 
     //
-    protected $table = 'portfolios';
     protected $fillable = [
         'libelle',
         'slug',
         'description',
         'statut',
+        'video_facebook', //lien video facebook
+        'video_youtube', //lien video youtube
     ];
 
 

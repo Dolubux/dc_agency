@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('libelle')->nullable();
             $table->string('slug')->nullable();
             $table->longText('description')->nullable();
+            $table->string('video_facebook')->nullable();
+            $table->string('video_youtube')->nullable();
             $table->boolean('statut')->default(1);
             $table->timestamps();
         });

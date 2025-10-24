@@ -1,5 +1,9 @@
 @extends('backend.layouts.master')
 
+@section('title')
+    Créer un nouveau portfolio
+@endsection
+
 @section('content')
     @component('backend.components.breadcrumb')
         <link href="{{ URL::asset('build/libs/dropzone/dropzone.css') }}" rel="stylesheet">
@@ -48,7 +52,7 @@
                                         <label for="image_principale" class="form-label">Image principale <span
                                                 class="text-danger">*</span></label>
                                         <input class="form-control" type="file" id="image_principale"
-                                            name="image_principale" accept="image/*" required>
+                                            name="image_principale" accept="image/*">
                                         <div class="mt-2 position-relative" style="display: inline-block;">
                                             <img id="previewImagePrincipale" src="#" alt="Aperçu"
                                                 style="max-width: 200px; display: none;" />
@@ -73,6 +77,69 @@
                                         @error('images.*')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
+                                    </div>
+                                </div>
+
+                                <!-- Section Vidéos -->
+                                <div class="card mb-3">
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">
+                                            <i class="ri-video-line text-primary me-2"></i>Liens Vidéo (Optionnel)
+                                        </h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mb-3">
+                                            <label for="video_youtube" class="form-label">
+                                                <i class="fab fa-youtube text-danger me-1"></i>Vidéo YouTube
+                                            </label>
+                                            <input type="text" name="video_youtube" id="video_youtube" class="form-control"
+                                                placeholder="ID de la vidéo YouTube (ex: dQw4w9WgXcQ)" 
+                                                value="{{ old('video_youtube') }}">
+                                            <small class="text-muted">
+                                                Entrez uniquement l'ID de la vidéo YouTube. 
+                                                <br>Ex: pour https://www.youtube.com/watch?v=dQw4w9WgXcQ, entrez : dQw4w9WgXcQ
+                                            </small>
+                                            @error('video_youtube')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                            
+                                            <!-- Aperçu YouTube -->
+                                            <div id="youtube-preview" class="mt-3" style="display: none;">
+                                                <label class="form-label">Aperçu :</label>
+                                                <div style="position: relative; width: 100%; height: 200px; border-radius: 8px; overflow: hidden;">
+                                                    <iframe id="youtube-iframe" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="video_facebook" class="form-label">
+                                                <i class="fab fa-facebook text-primary me-1"></i>Vidéo Facebook
+                                            </label>
+                                            <input type="url" name="video_facebook" id="video_facebook" class="form-control"
+                                                placeholder="Lien complet de la vidéo Facebook" 
+                                                value="{{ old('video_facebook') }}">
+                                            <small class="text-muted">
+                                                Entrez le lien complet de la vidéo Facebook.
+                                                <br>Ex: https://www.facebook.com/user/videos/123456789/
+                                            </small>
+                                            @error('video_facebook')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                            
+                                            <!-- Aperçu Facebook -->
+                                            <div id="facebook-preview" class="mt-3" style="display: none;">
+                                                <label class="form-label">Aperçu :</label>
+                                                <div style="position: relative; width: 100%; height: 200px; border-radius: 8px; overflow: hidden;">
+                                                    <iframe id="facebook-iframe" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="alert alert-info">
+                                            <i class="ri-information-line me-2"></i>
+                                            <strong>Note :</strong> Les vidéos sont optionnelles. Si vous ajoutez une vidéo, elle sera affichée à la place de l'image principale dans le portfolio.
+                                        </div>
                                     </div>
                                 </div>
 
@@ -186,6 +253,33 @@
                 const dt = new DataTransfer();
                 galleryFiles.forEach(file => dt.items.add(file));
                 document.getElementById('images').files = dt.files;
+            }
+        });
+
+        // Aperçu vidéo YouTube
+        $('#video_youtube').on('input', function() {
+            const videoId = $(this).val().trim();
+            if (videoId && videoId.length > 5) {
+                // Validation basique d'un ID YouTube
+                if (/^[a-zA-Z0-9_-]{11}$/.test(videoId)) {
+                    $('#youtube-iframe').attr('src', `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`);
+                    $('#youtube-preview').show();
+                } else {
+                    $('#youtube-preview').hide();
+                }
+            } else {
+                $('#youtube-preview').hide();
+            }
+        });
+
+        // Aperçu vidéo Facebook
+        $('#video_facebook').on('input', function() {
+            const videoUrl = $(this).val().trim();
+            if (videoUrl && videoUrl.includes('facebook.com')) {
+                $('#facebook-iframe').attr('src', `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoUrl)}&show_text=false&width=400`);
+                $('#facebook-preview').show();
+            } else {
+                $('#facebook-preview').hide();
             }
         });
     </script>

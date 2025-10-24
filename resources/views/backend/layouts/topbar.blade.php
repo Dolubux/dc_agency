@@ -32,75 +32,79 @@
                         <span></span>
                     </span>
                 </button>
-
-
             </div>
 
             <div class="d-flex align-items-center">
-
-
-
                 <div class="ms-1 header-item d-none d-sm-flex">
+                    <a href="{{ route('page.accueil') }}" target="_blank" type="button"
+                        class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle right-bar-toggle">
+                        <i class='bx bx-globe fs-22'></i>
+                    </a>
                     <button type="button"
                         class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle light-dark-mode">
                         <i class='bx bx-moon fs-22'></i>
                     </button>
                 </div>
+            </div>
 
 
 
-                <!-- ========== Start profil ========== -->
 
-                @auth
-                    <div class="dropdown ms-sm-3 header-item topbar-user ">
-                        <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="d-flex align-items-center">
-                                <img class="rounded-circle header-profile-user"
-                                    src="@if (Auth::user()->avatar != '') {{ URL::asset('images/' . Auth::user()->avatar) }}@else{{ URL::asset('images/user-icon.png') }} @endif"
-                                    alt="Header Avatar">
-                                <span class="text-start ms-xl-2">
-                                    <span
-                                        class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Auth::user()->username }}</span>
-                                    <span
-                                        class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">{{ Auth::user()->roles[0]->name ?? '' }}</span>
-                                </span>
+
+
+
+            <!-- ========== Start profil ========== -->
+
+            @auth
+                <div class="dropdown ms-sm-3 header-item topbar-user ">
+                    <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="d-flex align-items-center">
+                            <img class="rounded-circle header-profile-user"
+                                src="@if (Auth::user()->avatar != '') {{ URL::asset('images/' . Auth::user()->avatar) }}@else{{ URL::asset('images/user-icon.png') }} @endif"
+                                alt="Header Avatar">
+                            <span class="text-start ms-xl-2">
+                                <span
+                                    class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Auth::user()->username }}</span>
+                                <span
+                                    class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">{{ Auth::user()->roles[0]->name ?? '' }}</span>
                             </span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <!-- item-->
-                            <h6 class="dropdown-header">Bienvenue {{ Auth::user()->username }} !</h6>
-                            <a class="dropdown-item" href="{{ route('admin-register.profil', Auth::user()->id) }}"><i
-                                    class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
-                                    class="align-middle">Profil</span></a>
+                        </span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <!-- item-->
+                        <h6 class="dropdown-header">Bienvenue {{ Auth::user()->username }} !</h6>
+                        <a class="dropdown-item" href="{{ route('admin-register.profil', Auth::user()->id) }}"><i
+                                class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
+                                class="align-middle">Profil</span></a>
 
 
-                            <a class="dropdown-item" href="#"><i
-                                    class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span
-                                    class="align-middle">Aide</span></a>
-                            <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"><i
+                                class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span
+                                class="align-middle">Aide</span></a>
+                        <div class="dropdown-divider"></div>
 
-                            {{-- <a class="dropdown-item" href="pages-profile-settings"><i
+                        {{-- <a class="dropdown-item" href="pages-profile-settings"><i
                                 class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Parametre</span></a> --}}
 
-                            @if (Auth::check() && Auth::user())
-                                <a class="dropdown-item " href="javascript:void();"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                                        class="bx bx-power-off font-size-16 align-middle me-1"></i> <span
-                                        key="t-logout">Déconnexion</span></a>
-                                <form id="logout-form" action="{{ route('admin.logout') }}" method="POST"
-                                    style="display: none;">
-                                    @csrf
-                                </form>
-                            @endif
-                        </div>
+                        @if (Auth::check() && Auth::user())
+                            <a class="dropdown-item " href="javascript:void();"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                                    class="bx bx-power-off font-size-16 align-middle me-1"></i> <span
+                                    key="t-logout">Déconnexion</span></a>
+                            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                            </form>
+                        @endif
                     </div>
-                @endauth
-                <!-- ========== End profil ========== -->
+                </div>
+            @endauth
+            <!-- ========== End profil ========== -->
 
-            </div>
         </div>
+    </div>
     </div>
 </header>
 
