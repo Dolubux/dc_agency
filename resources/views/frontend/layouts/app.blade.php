@@ -17,7 +17,7 @@
         rel="stylesheet">
 
     <!-- Styles critiques pour le loader (inline pour éviter le délai) -->
-    <style>
+    {{-- <style>
         /* Loader critique - inline pour affichage immédiat */
         #loader {
             position: fixed;
@@ -135,7 +135,7 @@
             opacity: 0;
             pointer-events: none;
         }
-    </style>
+    </style> --}}
 
     <!-- Reste des styles -->
     <style>
@@ -158,6 +158,7 @@
         }
 
         .heading-font {
+
             font-family: 'Playfair Display', serif;
         }
 
@@ -696,29 +697,6 @@
             }
         }
 
-        @media (max-width: 600px) {
-    #loader {
-        padding: 0;
-    }
-    .loader-content {
-        font-size: 1rem;
-        padding: 0 10px;
-    }
-    .loader-logo {
-        font-size: 2.2rem;
-        margin-bottom: 0.7rem;
-    }
-    .loader-tagline {
-        font-size: 1rem;
-        margin-bottom: 1rem;
-    }
-    .loader-spinner {
-        width: 40px;
-        height: 40px;
-        margin: 0 auto;
-    }
-}
-
         /* Animations supplémentaires */
         .floating {
             animation: floating 3s ease-in-out infinite;
@@ -768,14 +746,14 @@
 </head>
 
 <body class="loading">
-    <!-- Loader Premium -->
+    {{-- <!-- Loader Premium -->
     <div id="loader">
         <div class="loader-content">
             <div class="loader-logo"><img src="{{$parametre?->getFirstMediaUrl('logo_header') ?? URL::asset('front/images/logo/logo.jpg')}}" alt="{{config('app.name')}}" width="70"></div>
             <div class="loader-tagline">L’élégance au service de vos événements.</div>
             <div class="loader-spinner"></div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Contenu principal -->
     <div class="main-content">
@@ -903,37 +881,7 @@
     <script>
         // Loader immédiat - pas d'attente du DOM
         (function() {
-            // Marquer la classe loading sur le body
-            document.body.classList.add('loading');
-
-            // Timer de démarrage du loader (affichage immédiat)
-            let loaderTimer = setTimeout(function() {
-                hideLoader();
-            }, 1500); // Réduire à 1.5 secondes
-
-            // Quand tout est chargé
-            window.addEventListener('load', function() {
-                clearTimeout(loaderTimer);
-                hideLoader();
-            });
-
-            function hideLoader() {
-                const loader = document.getElementById('loader');
-                const mainContent = document.querySelector('.main-content');
-
-                if (loader) {
-                    loader.classList.add('hide');
-                    document.body.classList.remove('loading');
-
-                    if (mainContent) {
-                        mainContent.classList.add('loaded');
-                    }
-
-                    setTimeout(function() {
-                        loader.style.display = 'none';
-                    }, 800);
-                }
-            }
+      
 
             const sections = document.querySelectorAll("section[id]");
             const navLinks = document.querySelectorAll(".navbar-nav .nav-link");

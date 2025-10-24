@@ -1,7 +1,7 @@
 <section id="accueil" class="hero-section">
     <div class="container">
         <div class="hero-content" data-aos="fade-up">
-            <div class="hero-tagline">L’élégance au service de vos événements.</div>
+            {{-- <div class="hero-tagline">L’élégance au service de vos événements.</div> --}}
             <h1 class="heading-font">DC Agency</h1>
             <p class="hero-description">Des hôtesses, une équipe, une expérience — au service de votre image.</p>
             <div class="d-flex justify-content-center gap-3 flex-wrap"> <a href="#services"
