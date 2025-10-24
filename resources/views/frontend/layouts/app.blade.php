@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DC Agency - Agence Événementielle de Luxe</title>
+    <title>DC Agency - @yield('title' , 'Agence evenementielle')</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- AOS CSS -->
@@ -696,6 +696,29 @@
             }
         }
 
+        @media (max-width: 600px) {
+    #loader {
+        padding: 0;
+    }
+    .loader-content {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+    .loader-logo {
+        font-size: 2.2rem;
+        margin-bottom: 0.7rem;
+    }
+    .loader-tagline {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    .loader-spinner {
+        width: 40px;
+        height: 40px;
+        margin: 0 auto;
+    }
+}
+
         /* Animations supplémentaires */
         .floating {
             animation: floating 3s ease-in-out infinite;
@@ -874,7 +897,7 @@
     </div>
 
 
-    {{-- @include('frontend.components.whatsapp_bouttonup') --}}
+    @include('frontend.components.whatsapp_bouttonup')
 
     <!-- Scripts -->
     <script>
