@@ -9,7 +9,7 @@
                     class="btn btn-outline-premium">Voir notre portfolio</a> </div>
             <div class="hero-stats" data-aos="fade-up" data-aos-delay="500">
                 <div class="stat-item"> <span class="stat-number">500+</span> <span class="stat-label">Événements
-                        organisés</span> </div>
+                        participés</span> </div>
                 <div class="stat-item"> <span class="stat-number">15</span> <span class="stat-label">Années
                         d'expérience</span> </div>
                 <div class="stat-item"> <span class="stat-number">98%</span> <span class="stat-label">Clients
