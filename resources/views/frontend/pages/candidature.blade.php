@@ -24,7 +24,7 @@
                 <div class="section-subtitle">Rejoignez-nous</div>
                 <h2 class="section-title">Devenir hôtesse d'accueil</h2>
                 <p class="section-description">
-                    Rejoignez notre équipe d'hôtesses professionnelles et participez à des événements prestigieux dans toute la France.
+                    Rejoignez notre équipe d'hôtesses professionnelles et participez à des événements prestigieux.
                 </p>
             </div>
 

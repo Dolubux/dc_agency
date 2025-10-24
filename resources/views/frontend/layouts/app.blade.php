@@ -874,7 +874,7 @@
     </div>
 
 
-    @include('frontend.components.whatsapp_bouttonup')
+    {{-- @include('frontend.components.whatsapp_bouttonup') --}}
 
     <!-- Scripts -->
     <script>
