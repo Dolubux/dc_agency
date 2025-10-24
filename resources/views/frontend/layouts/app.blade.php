@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DC Agency - @yield('title' , 'Agence evenementielle')</title>
+    <title>DC Agency - @yield('title', 'Agence evenementielle')</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- AOS CSS -->
@@ -158,7 +158,7 @@
         }
 
         .heading-font {
-            
+
             font-family: 'Playfair Display', serif;
         }
 
@@ -675,213 +675,81 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+
             /* Éviter les débordements horizontaux */
-            html, body {
+            html,
+            body {
                 overflow-x: hidden !important;
                 width: 100% !important;
                 position: relative;
             }
-            
-            * {
-                max-width: 100% !important;
-                box-sizing: border-box;
+
+            .hero-section h1 {
+                font-size: 3rem;
             }
-            
-            .container {
-                padding-left: 10px !important;
-                padding-right: 10px !important;
-                max-width: 100% !important;
-            }
-            
-            /* Hero Section Mobile */
+
             .hero-section {
-                padding: 120px 0 80px !important;
-                background-attachment: scroll !important;
-                background-size: cover !important;
-                background-position: center !important;
+                padding: 150px 0 100px;
             }
-            
-            .hero-section h1 {
-                font-size: 2.5rem !important;
-                line-height: 1.2 !important;
-                margin-bottom: 1rem !important;
-            }
-            
-            .hero-tagline {
-                font-size: 1rem !important;
-                margin-bottom: 0.8rem !important;
-            }
-            
-            .hero-description {
-                font-size: 1rem !important;
-                margin-bottom: 2rem !important;
-                padding: 0 15px !important;
-            }
-            
+
             .hero-stats {
-                flex-direction: column !important;
-                gap: 1.5rem !important;
-                margin-top: 2rem !important;
+                flex-direction: column;
+                gap: 2rem;
             }
-            
-            /* Navbar Mobile */
-            .navbar {
-                padding: 0.8rem 0 !important;
-            }
-            
-            .navbar-brand img {
-                width: 45px !important;
-            }
-            
-            .navbar-nav .nav-link {
-                font-size: 0.95rem !important;
-                margin: 0.3rem 0 !important;
-                text-align: center;
-            }
-            
-            /* Sections Mobile */
-            .services-section,
-            .contact-section {
-                padding: 60px 0 !important;
-            }
-            
+
             .section-title {
-                font-size: 1.8rem !important;
-                margin-bottom: 1rem !important;
-                line-height: 1.3 !important;
+                font-size: 2.2rem;
             }
-            
-            .section-description {
-                font-size: 0.95rem !important;
-                margin-bottom: 2rem !important;
-                padding: 0 10px !important;
-            }
-            
-            /* Portfolio Grid Mobile */
-            .portfolio-grid {
-                grid-template-columns: 1fr !important;
-                gap: 1.5rem !important;
-                margin-top: 2rem !important;
-                padding: 0 10px !important;
-            }
-            
-            .portfolio-item {
-                margin-bottom: 1rem;
-            }
-            
-            .portfolio-item img {
-                height: 250px !important;
-            }
-            
-            /* Service Cards Mobile */
+
             .service-card {
-                padding: 2rem 1.5rem !important;
-                margin-bottom: 2rem !important;
-                margin-left: 10px !important;
-                margin-right: 10px !important;
-            }
-            
-            .service-icon {
-                width: 60px !important;
-                height: 60px !important;
-                font-size: 1.5rem !important;
-            }
-            
-            .service-card h4 {
-                font-size: 1.3rem !important;
-            }
-            
-            /* Contact Form Mobile */
-            .contact-form {
-                padding: 2rem 1rem !important;
-                margin: 0 10px !important;
-                border-radius: 15px !important;
-            }
-            
-            .form-control-premium {
-                padding: 0.8rem 1rem !important;
-                font-size: 0.95rem !important;
-                margin-bottom: 1rem !important;
-            }
-            
-            /* Footer Mobile */
-            .footer-premium {
-                padding: 50px 0 30px !important;
-            }
-            
-            .footer-premium .container {
-                padding: 0 15px !important;
-            }
-            
-            .footer-logo {
-                font-size: 2rem !important;
-            }
-            
-            .social-icons-premium {
-                justify-content: center !important;
-                margin-top: 1.5rem !important;
-                flex-wrap: wrap !important;
-            }
-            
-            .social-icon {
-                width: 40px !important;
-                height: 40px !important;
-                font-size: 1rem !important;
-                margin: 0.2rem !important;
-            }
-            
-            /* Team Cards Mobile */
-            .team-member-card {
-                padding: 1.5rem !important;
-                margin: 0 10px 2rem 10px !important;
-            }
-            
-            .team-avatar {
-                width: 120px !important;
-                height: 120px !important;
-            }
-            
-            /* Buttons Mobile */
-            .btn-premium,
-            .btn-outline-premium {
-                padding: 0.8rem 2rem !important;
-                font-size: 0.9rem !important;
-                width: auto !important;
-                margin: 0 auto !important;
-                display: inline-block !important;
+                margin-bottom: 2rem;
             }
         }
 
-        @media (max-width: 480px) {
-            .hero-section h1 {
-                font-size: 2rem !important;
+        /* Animations supplémentaires */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+
+            0%,
+            100% {
+                transform: translateY(0px);
             }
-            
-            .section-title {
-                font-size: 1.5rem !important;
-            }
-            
-            .service-card {
-                padding: 1.5rem 1rem !important;
-            }
-            
-            .portfolio-item img {
-                height: 200px !important;
-            }
-            
-            .contact-form {
-                padding: 1.5rem 1rem !important;
+
+            50% {
+                transform: translateY(-10px);
             }
         }
 
-        /* Éviter les conflits de z-index */
-        .main-content {
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-link.active {
+            color: #FF3C00 !important;
+            font-weight: 600;
             position: relative;
-            z-index: 1;
+            transition: color 0.3s ease;
         }
 
-        .navbar {
-            z-index: 1030;
+        .nav-link.active::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #FF3C00;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -890,7 +758,9 @@
     <!-- Loader Premium -->
     <div id="loader">
         <div class="loader-content">
-            <div class="loader-logo"><img src="{{$parametre?->getFirstMediaUrl('logo_header') ?? URL::asset('front/images/logo/logo.jpg')}}" alt="{{config('app.name')}}" width="70"></div>
+            <div class="loader-logo"><img
+                    src="{{ $parametre?->getFirstMediaUrl('logo_header') ?? URL::asset('front/images/logo/logo.jpg') }}"
+                    alt="{{ config('app.name') }}" width="70"></div>
             <div class="loader-tagline">L’élégance au service de vos événements.</div>
             <div class="loader-spinner"></div>
         </div>
@@ -923,16 +793,16 @@
                                 data-section="services">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('/') || request()->is('portfolios') ? 'active' : '' }}" href="{{ url('/#portfolio') }}"
-                                data-section="portfolio">Portfolio</a>
+                            <a class="nav-link {{ request()->is('/') || request()->is('portfolios') ? 'active' : '' }}"
+                                href="{{ url('/#portfolio') }}" data-section="portfolio">Portfolio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/#contact') }}"
                                 data-section="contact">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn btn-primary-custom ms-2 {{Route::is('page.candidature') ? 'active' : ''}}" href="{{ route('page.candidature') }}"
-                                data-section="candidat">Nous rejoindre</a>
+                            <a class="nav-link btn btn-primary-custom ms-2 {{ Route::is('page.candidature') ? 'active' : '' }}"
+                                href="{{ route('page.candidature') }}" data-section="candidat">Nous rejoindre</a>
                         </li>
                     </ul>
                 </div>
@@ -1007,8 +877,9 @@
                 </div>
 
                 <div class="footer-bottom">
-                    <p>&copy; {{ date('Y') }} DC Agency. Tous droits réservés. Developpé par <a href="https://www.linkedin.com/in/alex-kouamelan/"
-                            target="_blank" style="color: #ccc;">Alex Kouamelan</a>.
+                    <p>&copy; {{ date('Y') }} DC Agency. Tous droits réservés. Developpé par <a
+                            href="https://www.linkedin.com/in/alex-kouamelan/" target="_blank"
+                            style="color: #ccc;">Alex Kouamelan</a>.
                     </p>
                 </div>
             </div>
@@ -1141,7 +1012,7 @@
             observer.observe(el);
         });
 
-      
+
 
         // Mobile menu close on link click
         document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
